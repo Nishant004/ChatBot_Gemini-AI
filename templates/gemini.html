@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block head %}
+
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='css/gemini.css') }}"
+/>
+
+{% endblock head %} {% block title %}App {% endblock title %} 
+
+ {% block body%} 
+
+<div class="topbar" id="topbar">
+  <!-- <h2 class="topbar-title">G-CHAT</h2> -->
+  <a href="/home" class="topbar-title">G-CHAT</a>
+  <nav class="navigation">
+    <a href="/home">Home</a>
+  </nav>
+  <button class="logout" id="logout">
+    Logout <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  </button>
+  <i class="fas fa-angle-up close-icon" onclick="closeTopbar()"></i>
+</div>
+
+<i class="fas fa-angle-down open-icon" onclick="openTopbar()"></i>
+
+
+
+<div class="container" id="chatContainer">
+  {% for entry in data|reverse %}
+  <div class="message">
+    <p>You:</p>
+    <p class="user-message">{{ entry['input'] }}</p>
+    <p>Gemini:</p>
+    <p class="gemini-response">{{ entry['result'] }}</p>
+  </div>
+  {% endfor %}
+</div>
+<form class="element" method="POST" onsubmit="sendMessage(event)">
+  <textarea
+    type="text"
+    name="text"
+    id="chatInput"
+    placeholder="Type your message here..."
+    required
+    onkeydown="if(event.keyCode==13){sendMessage(event); return false;}"
+  ></textarea>
+  <button id="sendButton" type="submit">
+    <img src="{{ url_for('static', filename='img/send.png') }}" alt="Send" />
+  </button>
+</form>
+
+<footer class="footer">
+  <p>&copy; 2023 G-CHAT.</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/gemini.js') }}"></script>
+
+  {% endblock body %}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

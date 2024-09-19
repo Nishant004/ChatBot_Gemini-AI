@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+{% endblock head %} {% block title %} HOME - {% endblock title %} {% block body
+%}
+
+<nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                 <img class="logo-image"
+                     src="{{ url_for('static', filename='img/Chat.jpg') }}"
+                      alt=""
+                     />
+                <a href="#" class="nav-name">G-CHAT</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">Home</a>
+                </li>
+                <button class="started" id="started-button">TO CHAT ! </button>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="image-container">
+  <img
+    src="{{ url_for('static', filename='img/Robot1.jpg') }}"
+    class="center-image"
+    alt=""
+  />
+  <img
+    src="{{ url_for('static', filename='img/Robot1.jpg') }}"
+    class="center-image"
+    alt=""
+  />
+</div>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% endblock body %}
